@@ -23,9 +23,18 @@
       "source.fixAll.eslint": true // ファイル保存時、ESLint による自動フォーマット
     }
   },
-  "postCreateCommand": ["npm ci"], // devcontainer作成時に実行されるコマンド
+  // devcontainer作成時に実行されるコマンド
+  "postCreateCommand": {
+    // "npm ci"
+    "aws_config_access_key_id": "echo AWS_ACCESS_KEY_ID=${localEnv:AWS_ACCESS_KEY_ID_CIUSER} >> .bashrc",
+    "aws_config_secret_access_key": "echo AWS_SECRET_ACCESS_KEY=${localEnv:AWS_SECRET_ACCESS_KEY} >> .bashrc",
+    "aws_config_region": "echo AWS_REGION=ap-northeast-1 >> .bashrc"
+  },
   // "postAttachCommand": "echo hello", // codespaces接続時に実行されるコマンド
   "features": {
-    "ghcr.io/devcontainers/features/terraform:1": {}
+    // https://github.com/devcontainers/features/tree/main/src/terraform
+    "ghcr.io/devcontainers/features/terraform:1": {},
+    // https://github.com/devcontainers/features/tree/main/src/aws-cli
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
   }
 }
