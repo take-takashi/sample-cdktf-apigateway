@@ -26,8 +26,6 @@
   "postCreateCommand": ["npm ci"], // devcontainer作成時に実行されるコマンド
   // "postAttachCommand": "echo hello", // codespaces接続時に実行されるコマンド
   "features": {
-    "ghcr.io/devcontainers/features/terraform:1": {
-      "version": "v0.14.x"
-    }
+    "ghcr.io/devcontainers/features/terraform:1": {}
   }
 }
