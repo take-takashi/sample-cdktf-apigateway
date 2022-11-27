@@ -24,12 +24,7 @@
     }
   },
   // devcontainer作成時に実行されるコマンド
-  "postCreateCommand": {
-    // "npm ci"
-    "aws_config_access_key_id": "echo AWS_ACCESS_KEY_ID=${localEnv:AWS_ACCESS_KEY_ID_CIUSER} >> .bashrc",
-    "aws_config_secret_access_key": "echo AWS_SECRET_ACCESS_KEY=${localEnv:AWS_SECRET_ACCESS_KEY} >> .bashrc",
-    "aws_config_region": "echo AWS_REGION=ap-northeast-1 >> .bashrc"
-  },
+  "postCreateCommand": "bash ./.devcontainer/init.bash",
   // "postAttachCommand": "echo hello", // codespaces接続時に実行されるコマンド
   "features": {
     // https://github.com/devcontainers/features/tree/main/src/terraform
