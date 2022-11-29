@@ -5,6 +5,7 @@ CDK for Terraform を使って AWS の API Gateway を立ててみる
 # Change history codespaces
 
 - node:17.6.0 -> node:18.0.0
+  - 理由：cdk for terraform インストールするときに node バージョンでエラーが出たため
 
 # add codespaces secret
 
