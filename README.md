@@ -27,4 +27,5 @@ echo "export AWS_REGION=ap-northeast-1" >> .bashrc
 ```
 mkdir infra && cd infra
 cdktf init --template=typescript --local
+cdktf provider add "aws@~>4.0"
 ```
