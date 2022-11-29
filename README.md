@@ -40,3 +40,34 @@ cd infra/
 cdktf synth
 cdktf apply
 ```
+
+# Lambda setup
+
+```
+mkdir lambda && cd lambda
+mkdir src && cd src
+touch index.ts #
+cd ..
+npm init
+touch tsconfig.json # どこかのtsconfig.jsonを真似する
+# typescriptはtscコマンドでトランスパイルするために使用
+# npm-pack-zipはディレクトリをZIP化するのに使用
+npm i -D typescript npm-pack-zip
+```
+
+- npm-pack-zip のために package.json を編集
+  - files
+  - bundledDependencies
+  - scripts commands
+    - build
+    - zip
+    - deploy
+
+## Lambda Deploy
+
+```
+cd lambda/
+npm run build
+npm run zip
+npm run deploy
+```

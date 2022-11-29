@@ -1,0 +1,22 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "zip": "npm-pack-zip",
+    "deploy": "aws s3 cp lambda.zip s3://sample-cdktf-apigateway-lambda-test-s3/lambda/helloworld.zip"
+  },
+  "files": [
+    "dist"
+  ],
+  "bundledDependencies": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-pack-zip": "^1.3.0",
+    "typescript": "^4.9.3"
+  }
+}
