@@ -6,6 +6,8 @@ CDK for Terraform を使って AWS の API Gateway を立ててみる
 
 - node:17.6.0 -> node:18.0.0
   - 理由：cdk for terraform インストールするときに node バージョンでエラーが出たため
+- codespaces のマシンのメモリ 2GB -> 4GB
+  - 理由：cdktf synth コマンドでメモリ不足でエラーが出るため
 
 # add codespaces secret
 
@@ -29,4 +31,12 @@ echo "export AWS_REGION=ap-northeast-1" >> .bashrc
 mkdir infra && cd infra
 cdktf init --template=typescript --local
 cdktf provider add "aws@~>4.0"
+```
+
+# CDKTF で apply するまで
+
+```
+cd infra/
+cdktf synth
+cdktf apply
 ```

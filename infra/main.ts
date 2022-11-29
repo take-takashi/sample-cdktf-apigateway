@@ -16,7 +16,7 @@ class MyStack extends TerraformStack {
     })
 
     new aws.apigatewayv2Api.Apigatewayv2Api(this, 'apigatewayv2Api', {
-      name: 'nametest',
+      name: 'nametest', // API Gatewayの名前になる
       protocolType: 'HTTP',
     })
   }
