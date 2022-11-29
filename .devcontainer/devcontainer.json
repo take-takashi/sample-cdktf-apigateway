@@ -1,6 +1,6 @@
 {
-  "image": "node:17.6.0",
-  "name": "node:17.6.0",
+  "image": "node:18.0.0",
+  "name": "node:18.0.0",
   "extensions": [
     "hediet.vscode-drawio",
     "GrapeCity.gc-excelviewer",
