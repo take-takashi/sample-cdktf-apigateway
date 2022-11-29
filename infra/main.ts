@@ -37,6 +37,19 @@ class MyStack extends TerraformStack {
         ignoreChanges: ['etag', 'metadata'],
       },
     })
+
+    const iam = new aws.iamRole.IamRole(this, 'iamRole', {
+      name: `${projectName}-role`,
+      // TODO
+      assumeRolePolicy: JSON.stringify({
+        Version: '2012-10-17',
+      }),
+    })
+
+    new aws.lambdaFunction.LambdaFunction(this, 'lambdaFunction', {
+      functionName: 'helloworld',
+      role: iam.arn, // TODO
+    })
   }
 }
 

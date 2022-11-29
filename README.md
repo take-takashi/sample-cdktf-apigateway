@@ -71,3 +71,7 @@ npm run build
 npm run zip
 npm run deploy
 ```
+
+# TODO
+
+- lambda 用の iam 作成、アタッチ
