@@ -30,7 +30,7 @@ class MyStack extends TerraformStack {
 
     // Lambdaデプロイ用のS3オブジェクト
     // 実態なしのダミーファイルとして配置
-    new aws.s3Object.S3Object(this, 's3Object', {
+    const s3object = new aws.s3Object.S3Object(this, 's3Object', {
       bucket: s3bucket.bucket,
       key: 'lambda/helloworld.zip',
       lifecycle: {
@@ -38,17 +38,37 @@ class MyStack extends TerraformStack {
       },
     })
 
-    const iam = new aws.iamRole.IamRole(this, 'iamRole', {
+    // lambda用のロール
+    const iamRole = new aws.iamRole.IamRole(this, 'iamRole', {
       name: `${projectName}-role`,
-      // TODO
       assumeRolePolicy: JSON.stringify({
         Version: '2012-10-17',
+        Statement: [
+          {
+            Action: 'sts:AssumeRole',
+            Effect: 'Allow',
+            Sid: '',
+            Principal: {
+              Service: 'lambda.amazonaws.com',
+            },
+          },
+        ],
       }),
+    })
+
+    // lambda用のロールにマネージドポリシーをアタッチ
+    // Add execution role for lambda to write to CloudWatch logs
+    new aws.iamRolePolicyAttachment.IamRolePolicyAttachment(this, 'lambda-managed-policy', {
+      policyArn: 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole',
+      role: iamRole.name,
     })
 
     new aws.lambdaFunction.LambdaFunction(this, 'lambdaFunction', {
       functionName: 'helloworld',
-      role: iam.arn, // TODO
+      s3Bucket: s3bucket.bucket,
+      s3Key: s3object.key,
+      role: iamRole.arn,
+      // TODO
     })
   }
 }

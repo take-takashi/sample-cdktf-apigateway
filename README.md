@@ -11,8 +11,8 @@ CDK for Terraform を使って AWS の API Gateway を立ててみる
 
 # add codespaces secret
 
-- AWS_ACCESS_KEY_ID_CIUSER
-- AWS_SECRET_ACCESS_KEY_CIUSER
+- AWS_ACCESS_KEY_ID_CLIUSER
+- AWS_SECRET_ACCESS_KEY_CLIUSER
 
 ## 環境変数の使い方（.devcontainer/init.bash）
 
